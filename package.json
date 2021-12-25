@@ -1,6 +1,6 @@
 {
 	"name": "remac",
-	"version": "0.0.1-alpha.5",
+	"version": "0.0.1-alpha.6",
 	"main": "bin/cli.js",
 	"repository": "https://github.com/xencodes/remac",
 	"author": "xencodes <xencodes@icloud.com>",
