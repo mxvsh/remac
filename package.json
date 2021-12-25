@@ -15,6 +15,7 @@
 		"remac": "bin/cli.js"
 	},
 	"scripts": {
+		"prepublish": "rm -rf dist/cache",
 		"dev": "NODE_ENV=development ts-node --project tsconfig.server.json src/index.ts",
 		"build": "next build && npx tsc -p tsconfig.server.json",
 		"start": "next start",
