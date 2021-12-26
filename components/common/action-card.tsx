@@ -1,13 +1,8 @@
 import React from 'react'
 import { Box, Button, ButtonGroup, Text } from '@chakra-ui/react'
+import { Action } from '../../types'
 
-type Props = {
-  label: string
-  description: string
-  onClick: () => void
-}
-
-const Card: React.FC<Props> = ({ label, description, onClick }) => {
+const ActionCard: React.FC<Action> = ({ label, description }) => {
   return (
     <Box
       p={4}
@@ -16,7 +11,6 @@ const Card: React.FC<Props> = ({ label, description, onClick }) => {
       _hover={{ shadow: 'md' }}
       transition='all 0.2s'
       willChange={'contents'}
-      onClick={onClick}
     >
       <Text>{label}</Text>
       <Text color='gray'>{description}</Text>
@@ -30,4 +24,4 @@ const Card: React.FC<Props> = ({ label, description, onClick }) => {
   )
 }
 
-export default Card
+export default ActionCard

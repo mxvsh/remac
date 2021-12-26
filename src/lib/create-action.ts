@@ -17,7 +17,6 @@ export const create_action = (
     description,
   })
 
-  console.log('actions', actions)
   config.set('actions', actions)
-  console.log(colors.bold.green(`[info] created action ${label}`))
+  console.log(colors.bold.green(`[success] created action ${label}`))
 }

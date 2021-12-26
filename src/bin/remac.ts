@@ -61,11 +61,10 @@ program
   .command('add')
   .argument('<file>', 'location of the executable')
   .argument('<label>', 'label of the action')
-  .argument('[description]', 'description of the action')
+  .argument('[description...]', 'description of the action')
   .description('add a new action')
-  .action((file, label, description) => {
-    console.log('file, label, description', file, label, description)
-    create_action(file, label, description)
+  .action((file, label, description = []) => {
+    create_action(file, label, description.join(' '))
   })
 
 program.parse(process.argv)
