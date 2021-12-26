@@ -16,6 +16,9 @@ const Home: NextPage<Props> = ({ actions }) => {
       <Box mb={8} textAlign={'center'}>
         <Text fontSize={'3xl'}>remac</Text>
       </Box>
+      {actions.length === 0 && (
+        <Text textAlign={'center'}>no actions found</Text>
+      )}
       <SimpleGrid
         p={4}
         maxW='4xl'
@@ -36,7 +39,7 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-      actions,
+      actions: actions || [],
     },
   }
 }
