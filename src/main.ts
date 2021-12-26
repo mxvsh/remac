@@ -1,7 +1,7 @@
 import next from 'next'
 import express from 'express'
 
-const { PORT = 3000, NODE_ENV } = process.env
+const { NODE_ENV } = process.env
 
 let dev = false
 
@@ -12,7 +12,7 @@ if (NODE_ENV === 'development') {
 const app = next({ dev, dir: __dirname + '/..' })
 const handle = app.getRequestHandler()
 
-const init = async () => {
+const init = async (port: number = 3000) => {
   await app.prepare()
   const server = express()
 
@@ -20,7 +20,8 @@ const init = async () => {
     return handle(req, res)
   })
 
-  server.listen(PORT, (err?: any) => {
+  server.listen(port, (err?: any) => {
+    console.log(`> Ready on http://localhost:${port}`)
     if (err) throw err
   })
 }
