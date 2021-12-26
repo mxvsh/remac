@@ -5,6 +5,7 @@ const config = new ConfigStore('remac')
 
 export const create_action = (
   file: string,
+  cwd: string,
   label: string,
   description?: string
 ) => {
@@ -15,6 +16,7 @@ export const create_action = (
     label,
     file,
     description,
+    cwd,
   })
 
   config.set('actions', actions)

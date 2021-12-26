@@ -64,7 +64,7 @@ program
   .argument('[description...]', 'description of the action')
   .description('add a new action')
   .action((file, label, description = []) => {
-    create_action(file, label, description.join(' '))
+    create_action(file, process.cwd(), label, description.join(' '))
   })
 
 program.parse(process.argv)

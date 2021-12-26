@@ -1,5 +1,6 @@
 import next from 'next'
 import express from 'express'
+import { action_route } from './api'
 
 const { NODE_ENV } = process.env
 
@@ -15,6 +16,10 @@ const handle = app.getRequestHandler()
 const init = async (port: number = 11497) => {
   await app.prepare()
   const server = express()
+
+  server.use(express.json())
+
+  server.use('/api/action', action_route)
 
   server.all('*', (req, res) => {
     return handle(req, res)

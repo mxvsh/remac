@@ -1,6 +1,20 @@
 import type { NextPage } from 'next'
+import { useState } from 'react'
 import ConfigStore from 'configstore'
-import { Box, SimpleGrid, Text } from '@chakra-ui/react'
+import {
+  Box,
+  SimpleGrid,
+  Text,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  Button,
+} from '@chakra-ui/react'
 import ActionCard from '../components/common/action-card'
 import { Action } from '../types'
 
@@ -11,6 +25,9 @@ type Props = {
 }
 
 const Home: NextPage<Props> = ({ actions }) => {
+  const log_modal = useDisclosure()
+  const [logs, setLogs] = useState('')
+
   return (
     <Box>
       <Box mb={8} textAlign={'center'}>
@@ -27,9 +44,29 @@ const Home: NextPage<Props> = ({ actions }) => {
         spacing={4}
       >
         {actions.map((action, idx) => (
-          <ActionCard key={idx} {...action} />
+          <ActionCard
+            key={idx}
+            action={action}
+            onShowLog={(logs) => {
+              setLogs(logs)
+              log_modal.onOpen()
+            }}
+          />
         ))}
       </SimpleGrid>
+
+      <Modal isOpen={log_modal.isOpen} onClose={log_modal.onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Logs</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>{logs}</ModalBody>
+
+          <ModalFooter>
+            <Button onClick={log_modal.onClose}>Close</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Box>
   )
 }
