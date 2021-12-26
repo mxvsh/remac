@@ -27,12 +27,12 @@ const start = (port: string) => {
 
 program
   .command('start')
-  .argument('[port]', 'port to run on')
+  // .argument('[port]', 'port to run on')
   .description('start the process')
-  .action((port) => {
+  .action(() => {
     pidusage(service_pid, (err) => {
       if (err) {
-        start(port || '11497')
+        start('11497')
         return
       }
       console.log(colors.bold.yellow(`[info] remac is already running`))
