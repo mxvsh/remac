@@ -12,7 +12,7 @@ if (NODE_ENV === 'development') {
 const app = next({ dev, dir: __dirname + '/..' })
 const handle = app.getRequestHandler()
 
-const init = async (port: number = 3000) => {
+const init = async (port: number = 11497) => {
   await app.prepare()
   const server = express()
 

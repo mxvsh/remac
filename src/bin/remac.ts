@@ -32,7 +32,7 @@ program
   .action((port) => {
     pidusage(service_pid, (err) => {
       if (err) {
-        start(port || '3000')
+        start(port || '11497')
         return
       }
       console.log(colors.bold.yellow(`[info] remac is already running`))
