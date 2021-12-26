@@ -1,7 +1,23 @@
+import colors from 'colors'
 import ConfigStore from 'configstore'
 
 const config = new ConfigStore('remac')
 
-console.log(config.all())
+export const create_action = (
+  file: string,
+  label: string,
+  description?: string
+) => {
+  console.log(colors.bold.blue(`[info] creating action ${label}`))
+  const actions = config.get('actions') || []
 
-export const create_action = () => {}
+  actions.push({
+    label,
+    file,
+    description,
+  })
+
+  console.log('actions', actions)
+  config.set('actions', actions)
+  console.log(colors.bold.green(`[info] created action ${label}`))
+}

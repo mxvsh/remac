@@ -1,5 +1,5 @@
-export interface CreateAction {
+export interface Action {
+  file: string // path to the execcutable file
   label: string
   description?: string
-  file_path?: string // path to the execcutable file
 }

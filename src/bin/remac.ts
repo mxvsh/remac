@@ -5,6 +5,7 @@ import { spawn } from 'child_process'
 import { program } from 'commander'
 import ConfigStore from 'configstore'
 import pidusage from 'pidusage'
+import { create_action } from '../lib/create-action'
 
 const packageFile = require('../../package.json')
 
@@ -54,6 +55,17 @@ program
     } catch (e) {
       console.log(colors.bold.yellow('[info] no service running'))
     }
+  })
+
+program
+  .command('add')
+  .argument('<file>', 'location of the executable')
+  .argument('<label>', 'label of the action')
+  .argument('[description]', 'description of the action')
+  .description('add a new action')
+  .action((file, label, description) => {
+    console.log('file, label, description', file, label, description)
+    create_action(file, label, description)
   })
 
 program.parse(process.argv)
