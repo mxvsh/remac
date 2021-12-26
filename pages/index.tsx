@@ -4,22 +4,17 @@ import { Box, SimpleGrid, Text } from '@chakra-ui/react'
 import ActionCard from '../components/common/action-card'
 import { Action } from '../types'
 
-const packageJson = require('../package.json')
 const configstore = new ConfigStore('remac')
 
 type Props = {
-  version: string
   actions: Action[]
 }
 
-const Home: NextPage<Props> = ({ version, actions }) => {
+const Home: NextPage<Props> = ({ actions }) => {
   return (
     <Box>
       <Box mb={8} textAlign={'center'}>
         <Text fontSize={'3xl'}>remac</Text>
-        <Text mt={-1} fontSize={'sm'} color='gray.400'>
-          v{version}
-        </Text>
       </Box>
       <SimpleGrid
         p={4}
@@ -42,7 +37,6 @@ export const getServerSideProps = async () => {
   return {
     props: {
       actions,
-      version: packageJson.version,
     },
   }
 }
